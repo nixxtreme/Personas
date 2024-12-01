@@ -24,8 +24,8 @@ public class PersonasEditor extends JFrame {
         setContentPane(panel1);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 300);
-
-        personas = new ArrayList<Persona>();
+        PersonaDAO pDAO = new PersonaDAO();
+        personas = pDAO.obtenerPersonas();
         nextButton.setToolTipText("Muestra la siguiente persona");
         prevButton.setToolTipText("Muestra la persona anterior");
 
@@ -68,6 +68,8 @@ public class PersonasEditor extends JFrame {
                         txtAddress.getText()
                 );
                 personas.add(nuevaPersona);
+                PersonaDAO pDao = new PersonaDAO();
+                pDao.insertPersona(txtName.getText(), txtAPaterno.getText(), txtAMaterno.getText(), txtEdad.getText(), txtTel.getText(), txtMail.getText(), txtAddress.getText());
                 //System.out.println(personas.get(0).getNombre());
                 txtName.setText("");
                 txtAPaterno.setText("");
